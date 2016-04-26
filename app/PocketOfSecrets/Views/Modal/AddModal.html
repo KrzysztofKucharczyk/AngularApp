@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body novalidate>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Add new secret</h3>
+        </div>
+        <form name="newSecretForm">
+            <div class="form-group">
+                <label for="usr">Who:</label>
+                <input type="text" class="form-control" id="newSecretWho" ng-model="newSecret.who" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">About:</label>
+                <input type="text" class="form-control" id="newSecretAbout" ng-model="newSecret.about" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Message:</label>
+                <input type="text" class="form-control" id="newSecretMessage" ng-model="newSecret.message" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Scary Value:</label>
+                <input type="text" class="form-control" id="newSecretMessage" ng-model="newSecret.scaryValue">
+            </div>
+            <div class="row">
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
+                    <button type="submit" class="btn btn-primary" data-ng-click="analyzeNewSecret(newSecret)" data-ng-disabled="newSecretForm.$error.required">Add new Secret</button>
+                </div>
+            </div>
+
+    </div>
+
+    </div>
+</body>
+
+</html>

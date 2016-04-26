@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body data-ng-init="init()" novalidate>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Edit secret</h3>
+        </div>
+        <div class="modal-body">
+            <p>Who: {{data.selectedSecret.who}}</p>
+            <p>About: {{data.selectedSecret.about}}</p>
+            <p>Message: {{data.selectedSecret.message}}</p>
+            <p>Scary Value: {{data.selectedSecret.scaryValue}}</p>
+        </div>
+        <form name="editSecretForm">
+            <div class="form-group">
+                <label for="usr">Who:</label>
+                <input type="text" class="form-control" id="editSecretWho" ng-model="editedSecret.who" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">About:</label>
+                <input type="text" class="form-control" id="editSecretAbout" ng-model="editedSecret.about" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Message:</label>
+                <input type="text" class="form-control" id="editSecretMessage" ng-model="editedSecret.message" required>
+            </div>
+            <div class="form-group">
+                <label for="usr">Scary value:</label>
+                <input type="text" class="form-control" id="editSecretMessage" ng-model="editedSecret.scaryValue">
+            </div>
+            <div class="modal-footer ">
+                <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
+                <button type="submit" class="btn btn-primary" data-ng-click="editSecret(editedSecret)" data-ng-disabled="editSecretForm.$error.required">Edit secret</button>
+            </div>
+    </div>
+    </div>
+</body>
+</html>
