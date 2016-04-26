@@ -1,5 +1,16 @@
 angular.module('app.component2').factory('BookServices', function($q, BookRequests) {
     var myService = {
+        getBooksOperation: function() {
+            var defer = $q.defer();
+            return BookRequests.getBooksRequest().then(
+                function(response) {
+                    defer.resolve(response.data);
+                    return defer.promise;
+                },
+                function(response) {
+                    defer.reject(response.data);
+                });
+        },
 
         editBookOperation: function(editedBook) {
             var myBook = angular.copy(editedBook);

@@ -1,4 +1,4 @@
-angular.module('app.component2').controller('LibraryController', function($scope, $http, $modal, books) {
+angular.module('app.component2').controller('LibraryController', function($scope, $modal, BookServices) {
     'use strict';
 
     $scope.selectedRowIndex = -1;
@@ -7,8 +7,6 @@ angular.module('app.component2').controller('LibraryController', function($scope
     $scope.data = {
         books: []
     };
-
-    angular.copy(books.data, $scope.data.books);
 
     $scope.add = function(books) {
         $modal.open({
@@ -46,4 +44,13 @@ angular.module('app.component2').controller('LibraryController', function($scope
             $scope.isSelected = false;
         }
     };
+
+    $scope.getAllBooks = function() {
+      $scope.books = {};
+
+      BookServices.getBooksOperation().then(function(response) {
+            $scope.data.books = response;
+        });
+    }();
+
 });

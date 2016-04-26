@@ -1,6 +1,12 @@
 angular.module('app.component2').factory('BookRequests', function($http) {
 
     var myService = {
+        getBooksRequest: function() {
+            return promise = $http({
+                method: 'GET',
+                url: '/Library/books.json',
+            });
+        },
         updateBookRequest: function(bookToUpdate) {
             return promise = $http({
                 method: 'PUT',

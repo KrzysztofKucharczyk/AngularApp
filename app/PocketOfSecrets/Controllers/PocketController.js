@@ -1,4 +1,4 @@
-angular.module('app.secret').controller('PocketController', function($scope, $modal, secrets) {
+angular.module('app.secret').controller('PocketController', function($scope, $modal, SecretServices) {
     'use strict';
 
     $scope.selectedRowIndex = -1;
@@ -7,8 +7,6 @@ angular.module('app.secret').controller('PocketController', function($scope, $mo
     $scope.data = {
         secrets: []
     };
-
-    angular.copy(secrets.data, $scope.data.secrets);
 
     $scope.add = function(secrets) {
         $modal.open({
@@ -46,4 +44,12 @@ angular.module('app.secret').controller('PocketController', function($scope, $mo
             $scope.isSelected = false;
         }
     };
+
+    $scope.getAllSecrets = function() {
+      $scope.books = {};
+
+      SecretServices.getSecretsOperation().then(function(response) {
+            $scope.data.secrets = response;
+        });
+    }();
 });

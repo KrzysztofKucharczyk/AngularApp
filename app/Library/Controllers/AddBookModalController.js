@@ -4,7 +4,7 @@ angular.module('app.component2').controller('AddBookModalController', function($
     $scope.analyzeNewBook = function(newBook) {
         newBook.id = passedBooks.length + 1;
 
-        // $scope.mockCreate(newBook);
+        $scope.mockCreate(newBook);
         $scope.myBook = angular.copy(newBook);
         BookServices.createBookOperation($scope.myBook);
         $scope.close();
@@ -15,8 +15,8 @@ angular.module('app.component2').controller('AddBookModalController', function($
         $modalInstance.close();
     };
 
-    // $scope.mockCreate = function(newBook) {
-    //     passedBooks.push(newBook);
-    // };
+    $scope.mockCreate = function(newBook) {
+        passedBooks.push(newBook);
+    };
 
 });

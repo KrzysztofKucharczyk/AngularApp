@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <body>
     <section>
         <h2>Welcome in Angular library of finest and most decent books!</h2>
@@ -12,7 +11,7 @@
                 <th>Year</th>
                 <th>Edit</th>
             </thead>
-            <tbody>
+            <tbody align="center">
                 <tr data-ng-repeat="item in data.books" data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}">
                     <td>{{item.title}}</td>
                     <td>{{item.author}}</td>
@@ -24,9 +23,7 @@
                 </tr>
             </tbody>
         </table>
-
         <button class="btn btn-default" data-ng-click="add()">Add new book</button>
     </section>
 </body>
-
 </html>

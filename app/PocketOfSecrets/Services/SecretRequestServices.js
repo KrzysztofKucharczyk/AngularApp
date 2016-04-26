@@ -1,6 +1,12 @@
 angular.module('app.secret').factory('SecretRequests', function($http) {
 
     var myService = {
+      getSecretsRequest: function() {
+          return promise = $http({
+              method: 'GET',
+              url: '/PocketOfSecrets/secrets.json',
+          });
+      },
         updateSecretRequest: function(secretToUpdate) {
             return promise = $http({
                 method: 'PUT',
