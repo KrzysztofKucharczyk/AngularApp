@@ -1,4 +1,4 @@
-angular.module('app.component2').factory('BookServices', function($q, BookRequests) {
+angular.module('app.library').factory('BookServices', function($q, BookRequests) {
     var myService = {
         getBooksOperation: function() {
             var defer = $q.defer();

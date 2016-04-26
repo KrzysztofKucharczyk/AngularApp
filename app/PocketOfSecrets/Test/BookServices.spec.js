@@ -3,7 +3,7 @@
 describe("Test services connected to tests.", function() {
     var scope, BookServices, RequestServices, httpBackend, $rootScope;
 
-    beforeEach(module("app.component2"));
+    beforeEach(module("app.library"));
 
     beforeEach(inject(function($rootScope, _BookServices_, $httpBackend, _RequestServices_) {
         scope = $rootScope.$new();

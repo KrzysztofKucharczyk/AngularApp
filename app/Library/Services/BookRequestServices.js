@@ -1,4 +1,4 @@
-angular.module('app.component2').factory('BookRequests', function($http) {
+angular.module('app.library').factory('BookRequests', function($http) {
 
     var myService = {
         getBooksRequest: function() {

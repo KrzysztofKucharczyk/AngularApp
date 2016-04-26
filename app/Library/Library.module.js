@@ -1,4 +1,4 @@
-angular.module('app.component2', ['ngRoute', 'app.component2.templates'])
+angular.module('app.library', ['ngRoute'])
     .config(function($routeProvider) {
         'use strict';
         $routeProvider.when('/Library/BookList', {

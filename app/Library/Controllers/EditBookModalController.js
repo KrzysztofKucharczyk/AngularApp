@@ -1,4 +1,4 @@
-angular.module('app.component2').controller('EditBookModalController', function($scope, $modalInstance, selectedBook, BookServices) {
+angular.module('app.library').controller('EditBookModalController', function($scope, $modalInstance, selectedBook, BookServices) {
     'use strict';
 
     $scope.editedBook = {};

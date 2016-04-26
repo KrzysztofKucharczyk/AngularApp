@@ -1,4 +1,4 @@
-angular.module('app.component2').controller('LibraryController', function($scope, $modal, BookServices) {
+angular.module('app.library').controller('LibraryController', function($scope, $modal, BookServices) {
     'use strict';
 
     $scope.selectedRowIndex = -1;

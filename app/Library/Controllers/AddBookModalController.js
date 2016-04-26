@@ -1,4 +1,4 @@
-angular.module('app.component2').controller('AddBookModalController', function($scope, $modalInstance, BookServices, passedBooks) {
+angular.module('app.library').controller('AddBookModalController', function($scope, $modalInstance, BookServices, passedBooks) {
     'use strict';
 
     $scope.analyzeNewBook = function(newBook) {

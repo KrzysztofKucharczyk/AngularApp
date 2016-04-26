@@ -11,14 +11,14 @@
                 <th>Year</th>
                 <th>Edit</th>
             </thead>
-            <tbody align="center">
+            <tbody>
                 <tr data-ng-repeat="item in data.books" data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}">
                     <td>{{item.title}}</td>
                     <td>{{item.author}}</td>
                     <td>{{item.genre}}</td>
                     <td>{{item.year}}</td>
                     <td>
-                        <button data-ng-show="selectedRowIndex + 1 === item.id" data-ng-click="edit()" class="btn btn-default">Edit</button>
+                        <button data-ng-disabled="selectedRowIndex + 1 !== item.id" data-ng-click="edit()" class="btn btn-default">Edit</button>
                     </td>
                 </tr>
             </tbody>
