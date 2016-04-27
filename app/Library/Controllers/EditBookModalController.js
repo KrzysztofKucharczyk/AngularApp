@@ -2,15 +2,19 @@ angular.module('app.library').controller('EditBookModalController', function($sc
     'use strict';
 
     $scope.editedBook = {};
-
+    $scope.date = {};
     // validation controller
     $scope.isRequired = true;
+
+    $scope.dateTimeNow = function() {
+        $scope.date = new Date();
+    }();
 
     $scope.init = function() {
         $scope.editedBook.title = selectedBook.title;
         $scope.editedBook.author = selectedBook.author;
         $scope.editedBook.genre = selectedBook.genre;
-        $scope.editedBook.year = selectedBook.year;
+        $scope.editedBook.year = $scope.date.getFullYear();
     }();
 
     $scope.editBook = function(editedBook) {
@@ -27,10 +31,7 @@ angular.module('app.library').controller('EditBookModalController', function($sc
         selectedBook.title = editedBook.title;
         selectedBook.author = editedBook.author;
         selectedBook.genre = editedBook.genre;
-        if (!isNaN(editedBook.year))
-            selectedBook.year = editedBook.year || 0;
-        else
-            selectedBook.year = 0;
+        selectedBook.year = $scope.date.getFullYear();
     };
 
 });

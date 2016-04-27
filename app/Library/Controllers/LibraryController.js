@@ -1,4 +1,4 @@
-angular.module('app.library').controller('LibraryController', function($scope, $modal, BookServices) {
+angular.module('app.library').controller('LibraryController', function($scope, $modal, BookServices, $timeout) {
     'use strict';
 
     $scope.selectedRowIndex = -1;
@@ -52,5 +52,4 @@ angular.module('app.library').controller('LibraryController', function($scope, $
             $scope.data.books = response;
         });
     }();
-
 });

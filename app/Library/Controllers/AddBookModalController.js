@@ -7,6 +7,7 @@ angular.module('app.library').controller('AddBookModalController', function($sco
     $scope.analyzeNewBook = function(newBook) {
         if (newBook !== undefined) {
             newBook.id = passedBooks.length + 1;
+            newBook.year = $scope.date.getFullYear();
 
             $scope.mockCreate(newBook);
             $scope.myBook = angular.copy(newBook);
@@ -23,5 +24,9 @@ angular.module('app.library').controller('AddBookModalController', function($sco
     $scope.mockCreate = function(newBook) {
         passedBooks.push(newBook);
     };
+
+    $scope.dateTimeNow = function() {
+        $scope.date = new Date();
+    }();
 
 });

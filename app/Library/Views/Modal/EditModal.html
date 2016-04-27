@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="usr">Year:</label>
-                <input type="text" class="form-control" id="editBookYear" ng-model="editedBook.year">
+                <datetimepicker ng-model="date" date-format="dd-MMM-yyyy"></datetimepicker>
             </div>
             <div class="modal-footer ">
                 <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
