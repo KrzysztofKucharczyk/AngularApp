@@ -14,23 +14,23 @@
         <form name="editBookForm">
             <div class="form-group">
                 <label for="usr">Title:</label>
-                <input type="text" class="form-control" id="editBookTitle" ng-model="editedBook.title" required>
+                <input type="text" class="form-control" id="editBookTitle" ng-model="editedBook.title" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">Authors:</label>
-                <input type="text" class="form-control" id="editBookAuthors" ng-model="editedBook.author" required>
+                <input type="text" class="form-control" id="editBookAuthors" ng-model="editedBook.author" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">Genre:</label>
-                <input type="text" class="form-control" id="editBookGenre" ng-model="editedBook.genre" required>
+                <input type="text" class="form-control" id="editBookGenre" ng-model="editedBook.genre">
             </div>
             <div class="form-group">
                 <label for="usr">Year:</label>
-                <input type="text" class="form-control" id="editBookYear" ng-model="editedBook.year" required>
+                <input type="text" class="form-control" id="editBookYear" ng-model="editedBook.year">
             </div>
             <div class="modal-footer ">
                 <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
-                <button type="submit" class="btn btn-primary" data-ng-click="editBook(editedBook)" data-ng-disabled="editBookForm.$error.required">Edit book</button>
+                <button type="submit" class="btn btn-primary" data-ng-click="editBook(editedBook)" data-ng-disabled="editBookForm.$invalid">Edit book</button>
             </div>
     </div>
     </div>

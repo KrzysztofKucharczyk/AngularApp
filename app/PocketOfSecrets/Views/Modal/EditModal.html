@@ -10,19 +10,19 @@
     <div class="modal-content">
         <div class="modal-header">
             <h3 class="modal-title">Edit secret</h3>
-        </div
+        </div>
         <form name="editSecretForm">
             <div class="form-group">
                 <label for="usr">Who:</label>
-                <input type="text" class="form-control" id="editSecretWho" ng-model="editedSecret.who" required>
+                <input type="text" class="form-control" id="editSecretWho" ng-model="editedSecret.who" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">About:</label>
-                <input type="text" class="form-control" id="editSecretAbout" ng-model="editedSecret.about" required>
+                <input type="text" class="form-control" id="editSecretAbout" ng-model="editedSecret.about" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">Message:</label>
-                <input type="text" class="form-control" id="editSecretMessage" ng-model="editedSecret.message" required>
+                <input type="text" class="form-control" id="editSecretMessage" ng-model="editedSecret.message" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">Scary value:</label>
@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer ">
                 <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
-                <button type="submit" class="btn btn-primary" data-ng-click="editSecret(editedSecret)" data-ng-disabled="editSecretForm.$error.required">Edit secret</button>
+                <button type="submit" class="btn btn-primary" data-ng-click="editSecret(editedSecret)"  data-ng-disabled="editSecretForm.$invalid">Edit secret</button>
             </div>
     </div>
     </div>

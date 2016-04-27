@@ -1,13 +1,18 @@
 angular.module('app.library').controller('AddBookModalController', function($scope, $modalInstance, BookServices, passedBooks) {
     'use strict';
 
-    $scope.analyzeNewBook = function(newBook) {
-        newBook.id = passedBooks.length + 1;
+    // validation controller
+    $scope.isRequired = true;
 
-        $scope.mockCreate(newBook);
-        $scope.myBook = angular.copy(newBook);
-        BookServices.createBookOperation($scope.myBook);
-        $scope.close();
+    $scope.analyzeNewBook = function(newBook) {
+        if (newBook !== undefined) {
+            newBook.id = passedBooks.length + 1;
+
+            $scope.mockCreate(newBook);
+            $scope.myBook = angular.copy(newBook);
+            BookServices.createBookOperation($scope.myBook);
+            $scope.close();
+        }
     };
 
     // cancel button functionality

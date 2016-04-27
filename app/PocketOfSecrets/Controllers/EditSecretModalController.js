@@ -1,6 +1,9 @@
 angular.module('app.secret').controller('EditSecretModalController', function($scope, $modalInstance, selectedSecret, SecretServices) {
     'use strict';
 
+    // validation controller
+    $scope.isRequired = true;
+
     $scope.editedSecret = {};
 
     $scope.init = function() {

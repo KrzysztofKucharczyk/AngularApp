@@ -3,6 +3,9 @@ angular.module('app.library').controller('EditBookModalController', function($sc
 
     $scope.editedBook = {};
 
+    // validation controller
+    $scope.isRequired = true;
+
     $scope.init = function() {
         $scope.editedBook.title = selectedBook.title;
         $scope.editedBook.author = selectedBook.author;

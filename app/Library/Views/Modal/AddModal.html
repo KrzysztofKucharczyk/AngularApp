@@ -14,24 +14,24 @@
         <form name="newBookForm">
             <div class="form-group">
                 <label for="usr">Title:</label>
-                <input type="text" class="form-control" id="newBookTitle" ng-model="newBook.title" required>
+                <input type="text" class="form-control" id="newBookTitle" ng-model="newBook.title" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">Authors:</label>
-                <input type="text" class="form-control" id="newBookAuthors" ng-model="newBook.author" required>
+                <input type="text" class="form-control" id="newBookAuthors" ng-model="newBook.author" data-ng-required="isRequired">
             </div>
             <div class="form-group">
                 <label for="usr">Genre:</label>
-                <input type="text" class="form-control" id="newBookGenre" ng-model="newBook.genre" required>
+                <input type="text" class="form-control" id="newBookGenre" ng-model="newBook.genre">
             </div>
             <div class="form-group">
                 <label for="usr">Year:</label>
-                <input type="text" class="form-control" id="newBookYear" ng-model="newBook.year" required>
+                <input type="text" class="form-control" id="newBookYear" ng-model="newBook.year">
             </div>
             <div class="row">
                 <div class="modal-footer">
                     <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
-                    <button type="submit" class="btn btn-primary" data-ng-click="analyzeNewBook(newBook)" data-ng-disabled="newBookForm.$error.required">Add new book</button>
+                    <button type="submit" class="btn btn-primary" data-ng-click="analyzeNewBook(newBook)" data-ng-disabled="newBookForm.$invalid">Add new book</button>
                 </div>
             </div>
 

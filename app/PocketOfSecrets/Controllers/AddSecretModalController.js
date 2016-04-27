@@ -1,6 +1,9 @@
 angular.module('app.secret').controller('AddSecretModalController', function($scope, $modalInstance, SecretServices, passedSecrets) {
     'use strict';
 
+    // validation controller
+    $scope.isRequired = true;
+
     $scope.analyzeNewSecret = function(newSecret) {
         newSecret.id = passedSecrets.length + 1;
         $scope.mockCreate(newSecret);
