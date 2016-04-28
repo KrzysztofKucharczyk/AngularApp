@@ -11,27 +11,42 @@
         <div class="modal-header">
             <h3 class="modal-title">Edit book</h3>
         </div>
-        <form name="editBookForm">
+        <form id="editBookForm" , name="editBookForm" class="form-horizontal" role="form">
             <div class="form-group">
-                <label for="usr">Title:</label>
-                <input type="text" class="form-control" id="editBookTitle" ng-model="editedBook.title" data-ng-required="isRequired">
+                <label class="control-label col-sm-2" align="left">Title:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="editBookTitle" ng-model="currentlyEditedBook.title" data-ng-required="isRequired" data-ng-disabled="!allowEdit">
+                </div>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">Authors:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="editBookAuthors" ng-model="currentlyEditedBook.authors" data-ng-required="isRequired" data-ng-disabled="!allowEdit">
+                </div>
+                </label>
             </div>
             <div class="form-group">
-                <label for="usr">Authors:</label>
-                <input type="text" class="form-control" id="editBookAuthors" ng-model="editedBook.author" data-ng-required="isRequired">
+                <label class="control-label col-sm-2">Genre:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="editBookGenre" ng-model="currentlyEditedBook.genre" data-ng-disabled="!allowEdit">
+                </div>
+                </label>
             </div>
             <div class="form-group">
-                <label for="usr">Genre:</label>
-                <input type="text" class="form-control" id="editBookGenre" ng-model="editedBook.genre">
+                <label class="control-label col-sm-2">Year:</label>
+                <div class="col-sm-3" data-ng-hide="!allowEdit">
+                    <datetimepicker ng-model="date" date-format="dd-MMM-yyyy" data-ng-disabled="!allowEdit"></datetimepicker>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="usr">Year:</label>
-                <datetimepicker ng-model="date" date-format="dd-MMM-yyyy"></datetimepicker>
-            </div>
-            <div class="modal-footer ">
+            <div class="form-group" align="center">
+                <button class="btn btn-info" data-ng-click="changeAllowRight()">Allow edition</button>
                 <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
-                <button type="submit" class="btn btn-primary" data-ng-click="editBook(editedBook)" data-ng-disabled="editBookForm.$invalid">Edit book</button>
+                <button type="submit" class="btn btn-primary" data-ng-click="editBook(currentlyEditedBook)" data-ng-disabled="editBookForm.$invalid">Edit book</button>
             </div>
+        </form>
+    </div>
     </div>
     </div>
 </body>

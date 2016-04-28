@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <body>
     <section>
         <h2>Welcome in Angular library of finest and most decent books!</h2>
-        <table class="table table-hover">
-            <thead>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Genre</th>
-                <th>Year</th>
-                <th>Edit</th>
-            </thead>
-            <tbody>
-                <tr data-ng-repeat="item in data.books" data-ng-click="selectRow($index)" data-ng-class="{'active': selectedRowIndex === $index}">
-                    <td>{{item.title}}</td>
-                    <td>{{item.author}}</td>
-                    <td>{{item.genre}}</td>
-                    <td>{{item.year}}</td>
-                    <td>
-                        <button data-ng-disabled="selectedRowIndex + 1 !== item.id" data-ng-click="edit()" class="btn btn-default">Edit</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="btn btn-default" data-ng-click="add()">Add new book</button>
+
+        <div align="center" data-ng-show="spinnerForLoadingData">
+            <img src="http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_gray_512.gif" alt="Mountain View" style="width:304px;height:228px;">
+        </div>
+        <div class="alert alert-danger" role="alert" data-ng-show="errorGettingBook">Books could not be fetched from database.</div>
+        <div data-ng-hide="spinnerForLoadingData || errorGettingBook">
+            <table class="table table-hover">
+                <thead>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Edit</th>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="item in data.books" data-ng-click="selectRow(item.id - 1)" data-ng-class="{'active': selectedRowIndex === $index}">
+                        <td>{{item.title}}</td>
+                        <td>{{item.authors}}</td>
+                        <td>{{item.genre}}</td>
+                        <td>{{item.year}}</td>
+                        <td>
+                            <button data-ng-disabled="selectedRowIndex + 1 !== item.id" data-ng-click="showEditModal()" class="btn btn-default">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-default" data-ng-click="showAddModal()">Add new book</button>
+        </div>
     </section>
 </body>
+
 </html>

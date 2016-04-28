@@ -1,32 +1,49 @@
-angular.module('app.library').controller('AddBookModalController', function($scope, $modalInstance, BookServices, passedBooks) {
+angular.module('app.library').controller('AddBookModalController', function($scope, $modalInstance, BookServices, bookListFromLibrary) {
     'use strict';
 
     // validation controller
     $scope.isRequired = true;
 
-    $scope.analyzeNewBook = function(newBook) {
-        if (newBook !== undefined) {
-            newBook.id = passedBooks.length + 1;
-            newBook.year = $scope.date.getFullYear();
+    /*
+     * Add book to database. Uses $http (POST method).
+     * Book is given withour id and status.
+     * Not including id will result in losing ability to edit book (no id, no checking for row).
+     * Will update view olny in case of success.
+     */
+    $scope.addBook = function(book) {
+        if (book !== undefined) {
+            setBookId(book);
+            setBookYear(book);
+            var bookToSave = angular.copy(book);
 
-            $scope.mockCreate(newBook);
-            $scope.myBook = angular.copy(newBook);
-            BookServices.createBookOperation($scope.myBook);
+            BookServices.createBookOperation(bookToSave).then(function(response) {
+                bookListFromLibrary.push(response);
+            });
             $scope.close();
         }
     };
 
-    // cancel button functionality
+    /*
+     * It closes modal. Required for cancel button functionality.
+     */
     $scope.close = function() {
         $modalInstance.close();
     };
 
-    $scope.mockCreate = function(newBook) {
-        passedBooks.push(newBook);
+    /*
+     * Gives book id bigger then the biggest in library.
+     * Must be done, without it it's impossible to access edit modal of given
+     * book.
+     */
+    var setBookId = function(book) {
+        book.id = bookListFromLibrary[bookListFromLibrary.length - 1].id + 1;
     };
 
-    $scope.dateTimeNow = function() {
-        $scope.date = new Date();
-    }();
+    /*
+     * Gives book chosen by user year.
+     */
+    var setBookYear = function(book) {
+        book.year = $scope.date.getFullYear().toString();
+    };
 
 });

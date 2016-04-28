@@ -1,40 +1,56 @@
 angular.module('app.library').factory('BookServices', function($q, BookRequests) {
     var myService = {
-        getBooksOperation: function() {
+        getBooksOperation: function(scope) {
             var defer = $q.defer();
+            scope.spinnerForLoadingData = true;
+
             return BookRequests.getBooksRequest().then(
                 function(response) {
+                    scope.spinnerForLoadingData = false;
                     defer.resolve(response.data);
                     return defer.promise;
                 },
                 function(response) {
+                    console.log("Books cannot be fetched from db.");
+                    scope.spinnerForLoadingData = false;
                     defer.reject(response.data);
+                    return defer.promise;
+                });
+            scope.spinnerForLoadingData = false;
+        },
+        createBookOperation: function(book) {
+            var bookToSave = angular.copy(book);
+            var defer = $q.defer();
+
+            return BookRequests.createBookRequest(bookToSave).then(
+                function(response) {
+                    defer.resolve(response.config.data);
+                    console.log("Added new book.");
+                    return defer.promise;
+                },
+                function(response) {
+                    console.log("New book could not be saved.");
+                    defer.reject(response.data);
+                    return defer.promise;
                 });
         },
 
-        editBookOperation: function(editedBook) {
-            var myBook = angular.copy(editedBook);
+        editBookOperation: function(book) {
+            var bookToEdit = angular.copy(book);
             var defer = $q.defer();
-            BookRequests.updateBookRequest(myBook).then(
-                function(response) {
-                    defer.resolve(response.data);
-                },
-                function(response) {
-                    defer.reject(response.data);
-                });
-        },
 
-        createBookOperation: function(savedBook) {
-            var myBook = angular.copy(savedBook);
-            var defer = $q.defer();
-            BookRequests.createBookRequest(myBook).then(
+            return BookRequests.updateBookRequest(bookToEdit).then(
                 function(response) {
+                    console.log("Book has been successfully edited.");
                     defer.resolve(response.data);
+                    return defer.promise;
                 },
                 function(response) {
+                    console.log("Changes could not be submited.");
                     defer.reject(response.data);
+                    return defer.promise;
                 });
         }
-    };
+    }
     return myService;
 });

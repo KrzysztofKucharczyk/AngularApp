@@ -11,30 +11,42 @@
         <div class="modal-header">
             <h3 class="modal-title">Add new book</h3>
         </div>
-        <form name="newBookForm">
-            <div class="form-group">
-                <label for="usr">Title:</label>
+      <form id="newBookForm" name="newBookForm" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="control-label col-sm-2" align="left">Title:</label>
+            <div class="col-sm-8">
                 <input type="text" class="form-control" id="newBookTitle" ng-model="newBook.title" data-ng-required="isRequired">
             </div>
-            <div class="form-group">
-                <label for="usr">Authors:</label>
-                <input type="text" class="form-control" id="newBookAuthors" ng-model="newBook.author" data-ng-required="isRequired">
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2">Authors:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="newBookAuthors" ng-model="newBook.authors" data-ng-required="isRequired">
             </div>
-            <div class="form-group">
-                <label for="usr">Genre:</label>
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Genre:</label>
+            <div class="col-sm-8">
                 <input type="text" class="form-control" id="newBookGenre" ng-model="newBook.genre">
             </div>
-            <div class="form-group">
-                <label for="usr">Year:</label>
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Year:</label>
+            <div class="col-sm-3">
                 <datetimepicker ng-model="date" date-format="dd-MMM-yyyy"></datetimepicker>
             </div>
-            <div class="row">
-                <div class="modal-footer">
-                    <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
-                    <button type="submit" class="btn btn-primary" data-ng-click="analyzeNewBook(newBook)" data-ng-disabled="newBookForm.$invalid">Add new book</button>
-                </div>
-            </div>
-    </div>
+        </div>
+        <div class="form-group" align="center">
+            <button class="btn btn-danger" data-ng-click="close()">Cancel operation</button>
+            <button type="submit" class="btn btn-primary" data-ng-click="addBook(newBook)" data-ng-disabled="newBookForm.$invalid">Add book</button>
+        </div>
+    </form>
+
+
 
     </div>
 </body>

@@ -1,26 +1,26 @@
 angular.module('app.library').factory('BookRequests', function($http) {
 
-    var myService = {
+    var bookRequestServices = {
         getBooksRequest: function() {
             return promise = $http({
                 method: 'GET',
-                url: '/Library/books.json',
+                url: 'http://localhost:8080/webstore/rbooks/',
             });
         },
-        updateBookRequest: function(bookToUpdate) {
-            return promise = $http({
-                method: 'PUT',
-                url: '/book_edit',
-                data: bookToUpdate
-            });
-        },
-        createBookRequest: function(bookToCreate) {
+        createBookRequest: function(book) {
             return promise = $http({
                 method: 'POST',
-                url: '/book_add',
-                data: bookToCreate
+                url: 'http://localhost:8080/webstore/rbooks/',
+                data: book
+            });
+        },
+        updateBookRequest: function(book) {
+            return promise = $http({
+                method: 'PUT',
+                url: 'http://localhost:8080/webstore/rbook/' + book.id,
+                data: book
             });
         }
     };
-    return myService;
+    return bookRequestServices;
 });
