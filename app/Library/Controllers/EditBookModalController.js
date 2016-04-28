@@ -14,6 +14,10 @@ angular.module('app.library').controller('EditBookModalController', function($sc
         $scope.allowEdit === false ? $scope.allowEdit = true : $scope.allowEdit = false;
     }
 
+    /*
+     * Add book to database. Uses $http (PUT method).
+     * Will update view only in case of success.
+     */
     $scope.editBook = function(book) {
         book.year = $scope.date.getFullYear();
 

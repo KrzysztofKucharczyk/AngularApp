@@ -9,6 +9,12 @@
             <img src="http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_gray_512.gif" alt="Mountain View" style="width:304px;height:228px;">
         </div>
         <div class="alert alert-danger" role="alert" data-ng-show="errorGettingBook">Books could not be fetched from database.</div>
+
+        <div class="input-group" data-ng-hide="errorGettingBook">
+            <span class="input-group-addon" id="basic-addon1">Search for: </span>
+            <input type="text" class="form-control" ng-model="query" placeholder="Username" aria-describedby="basic-addon1" placeholder="Filter by" autofocus>
+        </div>
+
         <div data-ng-hide="spinnerForLoadingData || errorGettingBook">
             <table class="table table-hover">
                 <thead>
@@ -19,7 +25,7 @@
                     <th>Edit</th>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="item in data.books" data-ng-click="selectRow(item.id - 1)" data-ng-class="{'active': selectedRowIndex === $index}">
+                    <tr data-ng-repeat="item in data.books | filter:query" data-ng-click="selectRow(item.id - 1)" data-ng-class="{'active': selectedRowIndex === $index}">
                         <td>{{item.title}}</td>
                         <td>{{item.authors}}</td>
                         <td>{{item.genre}}</td>

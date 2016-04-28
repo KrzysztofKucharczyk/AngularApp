@@ -6,9 +6,9 @@ angular.module('app.library').controller('AddBookModalController', function($sco
 
     /*
      * Add book to database. Uses $http (POST method).
-     * Book is given withour id and status.
+     * Book is given without id and status.
      * Not including id will result in losing ability to edit book (no id, no checking for row).
-     * Will update view olny in case of success.
+     * Will update view only in case of success.
      */
     $scope.addBook = function(book) {
         if (book !== undefined) {

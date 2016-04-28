@@ -1,22 +1,20 @@
 angular.module('app.library').factory('BookServices', function($q, BookRequests) {
     var myService = {
-        getBooksOperation: function(scope) {
+        getBooksOperation: function(closeSpinnerFnct) {
             var defer = $q.defer();
-            scope.spinnerForLoadingData = true;
-
+            
             return BookRequests.getBooksRequest().then(
                 function(response) {
-                    scope.spinnerForLoadingData = false;
+                    closeSpinnerFnct();
                     defer.resolve(response.data);
                     return defer.promise;
                 },
                 function(response) {
                     console.log("Books cannot be fetched from db.");
-                    scope.spinnerForLoadingData = false;
+                    closeSpinnerFnct();
                     defer.reject(response.data);
                     return defer.promise;
                 });
-            scope.spinnerForLoadingData = false;
         },
         createBookOperation: function(book) {
             var bookToSave = angular.copy(book);

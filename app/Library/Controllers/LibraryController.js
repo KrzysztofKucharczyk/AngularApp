@@ -75,12 +75,18 @@ angular.module('app.library').controller('LibraryController', function($scope, $
      */
     $scope.getAllBooks = function() {
         $scope.books = {};
-
-        BookServices.getBooksOperation($scope).then(function(response) {
+        $scope.spinnerForLoadingData = true;
+        BookServices.getBooksOperation(function() {
+            $scope.spinnerForLoadingData = false;
+        }).then(function(response) {
             $scope.data.books = response;
             $scope.errorGettingBook = false;
         }, function() {
-          $scope.errorGettingBook = true;
+            $scope.errorGettingBook = true;
         });
     }();
+
+    $scope.filterFunction = function(element) {
+        return element.name.match(/^Ma/) ? true : false;
+    };
 });
